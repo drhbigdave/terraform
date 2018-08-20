@@ -1,4 +1,4 @@
-Will deploy Anaconda 3, Java 8 JRE and Scala. 
+Will deploy Anaconda 3, Java 8 JRE and Scala on a t2.micro in us-east-1. You'll want to bump up the instance type for any usage, it is this low for testing this deployment plan.  
 
 Output isn't awesome as it's all installed via bash, the last bash script stays open in Terraform. But you'll have the public IP and the URL with token there in the command line output. You'll have to use Chrome to connect to it as the cert is self signed so you'll have to click Advanced and permit the site to open. 
 
