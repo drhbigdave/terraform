@@ -1,5 +1,11 @@
+
+#declared in tfvars
 variable "aws_profile" {}
 variable "home_ip" {}
+variable "vpc_id" {}
+variable "instance_username" {}
+
+
 variable "AWS_REGION" {
   default = "us-east-1"
 }
@@ -15,10 +21,4 @@ variable "PATH_TO_PRIVATE_KEY" {
 }
 variable "PATH_TO_PUBLIC_KEY" {
   default = "../../../tf_keys/mykey.pub"
-}
-variable "INSTANCE_USERNAME" {
-  default = "ec2-user"
-}
-variable "vpc_id" {
-  default = "vpc-11882474"
 }

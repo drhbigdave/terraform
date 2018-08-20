@@ -1,4 +1,4 @@
-resource "aws_instance" "example" {
+resource "aws_instance" "pyspark" {
   ami = "${lookup(var.AMIS, var.AWS_REGION)}"
   instance_type = "t2.micro"
   availability_zone = "us-east-1a"
@@ -50,13 +50,13 @@ resource "aws_instance" "example" {
   }
 
   connection {
-    user = "${var.INSTANCE_USERNAME}"
+    user = "${var.instance_username}"
     private_key = "${file("${var.PATH_TO_PRIVATE_KEY}")}"
   }
 }
 
 output "instance_ips" {
-  value = ["${aws_instance.example.*.public_ip}"]
+  value = ["${aws_instance.pyspark.*.public_ip}"]
 }
 
 resource "aws_ebs_volume" "data_vol" {
@@ -67,5 +67,5 @@ resource "aws_ebs_volume" "data_vol" {
 resource "aws_volume_attachment" "ebs_att" {
   device_name = "/dev/sdh"
   volume_id   = "${aws_ebs_volume.data_vol.id}"
-  instance_id = "${aws_instance.example.id}"
+  instance_id = "${aws_instance.pyspark.id}"
 }
