@@ -13,5 +13,3 @@ home_ip = "" #will open SG to this IP
 vpc_id = "" # I didn't deploy the VPC and entire account with Terraform, so just supplied the vpc id here
 
 instance_username = ""  #made a variable as sometimes I use spel, sometimes Amazon 
-
-ctrl c to 
