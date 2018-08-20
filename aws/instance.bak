@@ -1,0 +1,56 @@
+resource "aws_security_group" "tf_ssh" {
+  name        = "tf_ssh"
+  description = "managed by tf ssh only"
+  vpc_id      = "${var.vpc_id}"
+
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["73.163.104.95/32"]
+  }
+
+  egress {
+    from_port       = 0
+    to_port         = 0
+    protocol        = "-1"
+    cidr_blocks     = ["0.0.0.0/0"]
+  }
+}
+resource "aws_key_pair" "mykey" {
+  key_name = "mykey"
+  public_key = "${file("${var.PATH_TO_PUBLIC_KEY}")}"
+}
+
+resource "aws_instance" "example" {
+  ami = "${lookup(var.AMIS, var.AWS_REGION)}"
+  instance_type = "t2.micro"
+  availability_zone = "us-east-1a"
+  key_name = "${aws_key_pair.mykey.key_name}"
+  vpc_security_group_ids = ["${aws_security_group.tf_ssh.id}"]
+
+  provisioner "file" {
+    source = "script.sh"
+    destination = "/tmp/script.sh"
+  }
+  provisioner "remote-exec" {
+    inline = [
+      "chmod +x /tmp/script.sh",
+      "sudo /tmp/script.sh"
+    ]
+  }
+  connection {
+    user = "${var.INSTANCE_USERNAME}"
+    private_key = "${file("${var.PATH_TO_PRIVATE_KEY}")}"
+  }
+}
+resource "aws_ebs_volume" "data_vol" {
+  availability_zone = "us-east-1a"
+  type = "gp2"
+  size              = 10
+}
+resource "aws_volume_attachment" "ebs_att" {
+  device_name = "/dev/sdh"
+  volume_id   = "${aws_ebs_volume.data_vol.id}"
+  instance_id = "${aws_instance.example.id}"
+}

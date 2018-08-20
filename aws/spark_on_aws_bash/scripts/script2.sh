@@ -7,3 +7,5 @@ export PATH=$SPARK_HOME:$PATH
 export PYTHONPATH=$SPARK_HOME/python:$PYTHONPATH
 
 jupyter notebook
+
+exit

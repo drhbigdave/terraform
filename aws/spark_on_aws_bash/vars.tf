@@ -1,4 +1,5 @@
 variable "aws_profile" {}
+variable "home_ip" {}
 variable "AWS_REGION" {
   default = "us-east-1"
 }
@@ -20,8 +21,4 @@ variable "INSTANCE_USERNAME" {
 }
 variable "vpc_id" {
   default = "vpc-11882474"
-}
-
-variable "home_ip" {
-  default = "73.163.104.95/32"
 }
