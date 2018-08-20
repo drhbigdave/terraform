@@ -7,8 +7,11 @@ You can control - c the Terraform apply. Currently it will cutoff an aws_ebs_att
 create a terraform.tfvars with valid entries for the following 
 
 aws_profile = "" #if you use aws profiles 
+
 home_ip = "" #will open SG to this IP
+
 vpc_id = "" # I didn't deploy the VPC and entire account with Terraform, so just supplied the vpc id here
+
 instance_username = ""  #made a variable as sometimes I use spel, sometimes Amazon 
 
 ctrl c to 
