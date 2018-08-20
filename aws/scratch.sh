@@ -101,14 +101,14 @@ ssg-centos7-xccdf.xml
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["73.163.104.95/32"]
+    cidr_blocks = 
   }
 
   ingress {
     from_port   = 8888
     to_port     = 8888
     protocol    = "tcp"
-    cidr_blocks = ["73.163.104.95/32"]
+    cidr_blocks = ["
   }
 
   egress {
