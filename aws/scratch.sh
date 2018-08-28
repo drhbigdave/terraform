@@ -1,3 +1,10 @@
+https://54.236.9.203:8888/?token=274ab2cebba9cb62aacbb1b428788fc89055eccfe4fa5bd3&token=274ab2cebba9cb62aacbb1b428788fc89055eccfe4fa5bd3
+
+
+yum install -y openscap-scanner scap-security-guide
+oscap xccdf eval --remediate --profile  standard --results scan-xccdf-results.xml /usr/share/xml/scap/ssg/content/ssg-amzn2-xccdf.xml
+
+
 yum install -y java-1.8.0-openjdk
 
 wget https://downloads.lightbend.com/scala/2.12.6/scala-2.12.6.rpm
@@ -23,6 +30,10 @@ export PATH=$PATH:$HOME/anaconda3/bin
 export SPARK_HOME='/home/ec2-user/spark-2.3.1-bin-hadoop2.7'
 export PATH=$SPARK_HOME:$PATH
 export PYTHONPATH=$SPARK_HOME/python:$PYTHONPATH
+
+on laptop
+export SPARK_HOME='/opt/apache-spark/spark-2.3.0-bin-hadoop2.7/'
+export PATH=$SPARK_HOME/bin:$PATH
 
 
 

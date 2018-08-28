@@ -1,6 +1,6 @@
 resource "aws_instance" "pyspark" {
   ami = "${lookup(var.AMIS, var.AWS_REGION)}"
-  instance_type = "t2.micro"
+  instance_type = "t2.medium"
   availability_zone = "us-east-1a"
 
   #ssh key
