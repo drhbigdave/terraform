@@ -18,6 +18,4 @@ You must also mod the relative path for ssh keys in vars.tf.
 
 Sorry some variables are upper, some lower case. It was from a tutorial, I'll fix it later.
 
-54.236.9.203
 
-https://54.236.9.203:8888/?token=8db0b1a2825f17776045572bffa00a259196eaf826b223d1&token=8db0b1a2825f17776045572bffa00a259196eaf826b223d1
